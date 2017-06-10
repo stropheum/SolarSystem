@@ -1,0 +1,63 @@
+﻿  compilation object save succeeded; see C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\BasicPS.cso
+  compilation object save succeeded; see C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\BasicVS.cso
+  compilation object save succeeded; see C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\SkyboxPS.cso
+  compilation object save succeeded; see C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\SkyboxVS.cso
+  pch.cpp
+  VectorHelper.cpp
+  Utility.cpp
+  StreamHelper.cpp
+  SpotLight.cpp
+  Skybox.cpp
+  ServiceContainer.cpp
+  SamplerStates.cpp
+  RenderTarget.cpp
+  RenderStateHelper.cpp
+  RasterizerStates.cpp
+  ProxyModel.cpp
+  PointLight.cpp
+  PerspectiveCamera.cpp
+  OrthographicCamera.cpp
+  MouseComponent.cpp
+  ModelMaterial.cpp
+  Model.cpp
+  Mesh.cpp
+  MatrixHelper.cpp
+  Light.cpp
+  Generating Code...
+  Compiling...
+  KeyboardComponent.cpp
+  Grid.cpp
+  GameTime.cpp
+  GamePadComponent.cpp
+  GameException.cpp
+  GameComponent.cpp
+  GameClock.cpp
+  Game.cpp
+  FpsComponent.cpp
+  FirstPersonCamera.cpp
+  DrawableGameComponent.cpp
+  DirectionalLight.cpp
+  ColorHelper.cpp
+  Camera.cpp
+  BlendStates.cpp
+  UtilityWin32.cpp
+  Generating Code...
+  Library.Desktop.vcxproj -> C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Library.Desktop.lib
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\Content\Fonts\Arial_14_Regular.spritefont
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\Content\Models\Sphere.obj.bin
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\Content\Shaders\BasicPS.hlsl
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\Content\Shaders\BasicVS.hlsl
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\Content\Shaders\SkyboxPS.hlsl
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\Content\Shaders\SkyboxVS.hlsl
+  6 File(s) copied
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Fonts\Arial_14_Regular.spritefont
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Models\Sphere.obj.bin
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\BasicPS.cso
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\BasicPS.hlsl
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\BasicVS.cso
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\BasicVS.hlsl
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\SkyboxPS.cso
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\SkyboxPS.hlsl
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\SkyboxVS.cso
+  C:\Users\strop\Desktop\pvarcholik-directx-essentials-livelessons-e4dc287c3bba\source\Library.Desktop\bin\Win32\Debug\Content\Shaders\SkyboxVS.hlsl
+  10 File(s) copied
