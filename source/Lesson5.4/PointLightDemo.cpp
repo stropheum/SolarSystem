@@ -13,7 +13,7 @@ namespace Rendering
 	const float PointLightDemo::LightMovementRate = 10.0f;
 
 	PointLightDemo::PointLightDemo(Game & game, const shared_ptr<Camera>& camera) :
-		DrawableGameComponent(game, camera), mWorldMatrix(MatrixHelper::Identity), mPointLight(game, XMFLOAT3(5.0f, 0.0f, 10.0f), 50.0f),
+		DrawableGameComponent(game, camera), mWorldMatrix(MatrixHelper::Identity), mPointLight(game, XMFLOAT3(5.0f, 0.0f, 10.0f), 5000000.0f),
 		mRenderStateHelper(game), mIndexCount(0), mTextPosition(0.0f, 40.0f), mAnimationEnabled(false)
 	{
 	}
@@ -30,35 +30,35 @@ namespace Rendering
 
 	void PointLightDemo::Initialize()
 	{
-		// Load a compiled vertex shader
-		vector<char> compiledVertexShader;
-		Utility::LoadBinaryFile(L"Content\\Shaders\\PointLightDemoVS.cso", compiledVertexShader);
-		ThrowIfFailed(mGame->Direct3DDevice()->CreateVertexShader(&compiledVertexShader[0], compiledVertexShader.size(), nullptr, mVertexShader.ReleaseAndGetAddressOf()), "ID3D11Device::CreatedVertexShader() failed.");
-
-		// Load a compiled pixel shader
-		vector<char> compiledPixelShader;
-		Utility::LoadBinaryFile(L"Content\\Shaders\\PointLightDemoPS.cso", compiledPixelShader);
-		ThrowIfFailed(mGame->Direct3DDevice()->CreatePixelShader(&compiledPixelShader[0], compiledPixelShader.size(), nullptr, mPixelShader.ReleaseAndGetAddressOf()), "ID3D11Device::CreatedPixelShader() failed.");
-
-		// Create an input layout
-		D3D11_INPUT_ELEMENT_DESC inputElementDescriptions[] =
-		{
-			{ "POSITION", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-			{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
-		};
-
-		ThrowIfFailed(mGame->Direct3DDevice()->CreateInputLayout(inputElementDescriptions, ARRAYSIZE(inputElementDescriptions), &compiledVertexShader[0], compiledVertexShader.size(), mInputLayout.ReleaseAndGetAddressOf()), "ID3D11Device::CreateInputLayout() failed.");
-
-		// Load the model
-		Library::Model model("Content\\Models\\Sphere.obj.bin");
-
-		// Create vertex and index buffers for the model
-		Library::Mesh* mesh = model.Meshes().at(0).get();
-		CreateVertexBuffer(*mesh, mVertexBuffer.ReleaseAndGetAddressOf());
-		mesh->CreateIndexBuffer(*mGame->Direct3DDevice(), mIndexBuffer.ReleaseAndGetAddressOf());
-		mIndexCount = static_cast<uint32_t>(mesh->Indices().size());
-
+//		// Load a compiled vertex shader
+//		vector<char> compiledVertexShader;
+//		Utility::LoadBinaryFile(L"Content\\Shaders\\PointLightDemoVS.cso", compiledVertexShader);
+//		ThrowIfFailed(mGame->Direct3DDevice()->CreateVertexShader(&compiledVertexShader[0], compiledVertexShader.size(), nullptr, mVertexShader.ReleaseAndGetAddressOf()), "ID3D11Device::CreatedVertexShader() failed.");
+//
+//		// Load a compiled pixel shader
+//		vector<char> compiledPixelShader;
+//		Utility::LoadBinaryFile(L"Content\\Shaders\\PointLightDemoPS.cso", compiledPixelShader);
+//		ThrowIfFailed(mGame->Direct3DDevice()->CreatePixelShader(&compiledPixelShader[0], compiledPixelShader.size(), nullptr, mPixelShader.ReleaseAndGetAddressOf()), "ID3D11Device::CreatedPixelShader() failed.");
+//
+//		// Create an input layout
+//		D3D11_INPUT_ELEMENT_DESC inputElementDescriptions[] =
+//		{
+//			{ "POSITION", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+//			{ "TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+//			{ "NORMAL", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, D3D11_APPEND_ALIGNED_ELEMENT, D3D11_INPUT_PER_VERTEX_DATA, 0 },
+//		};
+//
+//		ThrowIfFailed(mGame->Direct3DDevice()->CreateInputLayout(inputElementDescriptions, ARRAYSIZE(inputElementDescriptions), &compiledVertexShader[0], compiledVertexShader.size(), mInputLayout.ReleaseAndGetAddressOf()), "ID3D11Device::CreateInputLayout() failed.");
+//
+//		// Load the model
+//		Library::Model model("Content\\Models\\Sphere.obj.bin");
+//
+//		// Create vertex and index buffers for the model
+//		Library::Mesh* mesh = model.Meshes().at(0).get();
+//		CreateVertexBuffer(*mesh, mVertexBuffer.ReleaseAndGetAddressOf());
+//		mesh->CreateIndexBuffer(*mGame->Direct3DDevice(), mIndexBuffer.ReleaseAndGetAddressOf());
+//		mIndexCount = static_cast<uint32_t>(mesh->Indices().size());
+//
 		// Create constant buffers
 		D3D11_BUFFER_DESC constantBufferDesc = { 0 };
 		constantBufferDesc.ByteWidth = sizeof(VSCBufferPerFrame);
@@ -74,12 +74,12 @@ namespace Rendering
 		constantBufferDesc.ByteWidth = sizeof(PSCBufferPerObject);
 		ThrowIfFailed(mGame->Direct3DDevice()->CreateBuffer(&constantBufferDesc, nullptr, mPSCBufferPerObject.ReleaseAndGetAddressOf()), "ID3D11Device::CreateBuffer() failed.");
 
-		// Load textures for the color and specular maps
-		wstring textureName = L"Content\\Textures\\EarthComposite.dds";
-		ThrowIfFailed(CreateDDSTextureFromFile(mGame->Direct3DDevice(), textureName.c_str(), nullptr, mColorTexture.ReleaseAndGetAddressOf()), "CreateDDSTextureFromFile() failed.");
-
-		textureName = L"Content\\Textures\\EarthSpecularMap.png";
-		ThrowIfFailed(CreateWICTextureFromFile(mGame->Direct3DDevice(), textureName.c_str(), nullptr, mSpecularMap.ReleaseAndGetAddressOf()), "CreateWICTextureFromFile() failed.");
+//		// Load textures for the color and specular maps
+//		wstring textureName = L"Content\\Textures\\EarthComposite.dds";
+//		ThrowIfFailed(CreateDDSTextureFromFile(mGame->Direct3DDevice(), textureName.c_str(), nullptr, mColorTexture.ReleaseAndGetAddressOf()), "CreateDDSTextureFromFile() failed.");
+//
+//		textureName = L"Content\\Textures\\EarthSpecularMap.png";
+//		ThrowIfFailed(CreateWICTextureFromFile(mGame->Direct3DDevice(), textureName.c_str(), nullptr, mSpecularMap.ReleaseAndGetAddressOf()), "CreateWICTextureFromFile() failed.");
 
 		// Create text rendering helpers
 		mSpriteBatch = make_unique<SpriteBatch>(mGame->Direct3DDeviceContext());
@@ -106,11 +106,17 @@ namespace Rendering
 
 	void PointLightDemo::Update(const GameTime& gameTime)
 	{
+		UNREFERENCED_PARAMETER(gameTime);
 		static float angle = 0.0f;
 
 		if (mAnimationEnabled)
 		{
 			angle += gameTime.ElapsedGameTimeSeconds().count() * ModelRotationRate;
+			XMMATRIX positionMatrix(
+				2, 0, 0, 0,
+				0, 2, 0, 0,
+				0, 0, 2, 0,
+				0, 0, 0, 1);
 			XMStoreFloat4x4(&mWorldMatrix, XMMatrixRotationY(angle));
 		}
 
@@ -134,39 +140,39 @@ namespace Rendering
 		UNREFERENCED_PARAMETER(gameTime);
 		assert(mCamera != nullptr);
 
-		ID3D11DeviceContext* direct3DDeviceContext = mGame->Direct3DDeviceContext();
-		direct3DDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
-		direct3DDeviceContext->IASetInputLayout(mInputLayout.Get());
-
-		UINT stride = sizeof(VertexPositionTextureNormal);
-		UINT offset = 0;
-		direct3DDeviceContext->IASetVertexBuffers(0, 1, mVertexBuffer.GetAddressOf(), &stride, &offset);
-		direct3DDeviceContext->IASetIndexBuffer(mIndexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
-
-		direct3DDeviceContext->VSSetShader(mVertexShader.Get(), nullptr, 0);
-		direct3DDeviceContext->PSSetShader(mPixelShader.Get(), nullptr, 0);
-
-		XMMATRIX worldMatrix = XMLoadFloat4x4(&mWorldMatrix);
-		XMMATRIX wvp = worldMatrix * mCamera->ViewProjectionMatrix();
-		wvp = XMMatrixTranspose(wvp);
-		XMStoreFloat4x4(&mVSCBufferPerObjectData.WorldViewProjection, wvp);
-		XMStoreFloat4x4(&mVSCBufferPerObjectData.World, XMMatrixTranspose(worldMatrix));
-		direct3DDeviceContext->UpdateSubresource(mVSCBufferPerObject.Get(), 0, nullptr, &mVSCBufferPerObjectData, 0, 0);
-
-		ID3D11Buffer* VSConstantBuffers[] = { mVSCBufferPerFrame.Get(), mVSCBufferPerObject.Get() };
-		direct3DDeviceContext->VSSetConstantBuffers(0, ARRAYSIZE(VSConstantBuffers), VSConstantBuffers);
-
-		mPSCBufferPerFrameData.CameraPosition = mCamera->Position();
-		direct3DDeviceContext->UpdateSubresource(mPSCBufferPerFrame.Get(), 0, nullptr, &mPSCBufferPerFrameData, 0, 0);
-
-		ID3D11Buffer* PSConstantBuffers[] = { mPSCBufferPerFrame.Get(), mPSCBufferPerObject.Get() };
-		direct3DDeviceContext->PSSetConstantBuffers(0, ARRAYSIZE(PSConstantBuffers), PSConstantBuffers);
-
-		ID3D11ShaderResourceView* PSShaderResources[] = { mColorTexture.Get(), mSpecularMap.Get() };
-		direct3DDeviceContext->PSSetShaderResources(0, ARRAYSIZE(PSShaderResources), PSShaderResources);
-		direct3DDeviceContext->PSSetSamplers(0, 1, SamplerStates::TrilinearWrap.GetAddressOf());
-
-		direct3DDeviceContext->DrawIndexed(mIndexCount, 0, 0);
+//		ID3D11DeviceContext* direct3DDeviceContext = mGame->Direct3DDeviceContext();
+//		direct3DDeviceContext->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
+//		direct3DDeviceContext->IASetInputLayout(mInputLayout.Get());
+//
+//		UINT stride = sizeof(VertexPositionTextureNormal);
+//		UINT offset = 0;
+//		direct3DDeviceContext->IASetVertexBuffers(0, 1, mVertexBuffer.GetAddressOf(), &stride, &offset);
+//		direct3DDeviceContext->IASetIndexBuffer(mIndexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
+//
+//		direct3DDeviceContext->VSSetShader(mVertexShader.Get(), nullptr, 0);
+//		direct3DDeviceContext->PSSetShader(mPixelShader.Get(), nullptr, 0);
+//
+//		XMMATRIX worldMatrix = XMLoadFloat4x4(&mWorldMatrix);
+//		XMMATRIX wvp = worldMatrix * mCamera->ViewProjectionMatrix();
+//		wvp = XMMatrixTranspose(wvp);
+//		XMStoreFloat4x4(&mVSCBufferPerObjectData.WorldViewProjection, wvp);
+//		XMStoreFloat4x4(&mVSCBufferPerObjectData.World, XMMatrixTranspose(worldMatrix));
+//		direct3DDeviceContext->UpdateSubresource(mVSCBufferPerObject.Get(), 0, nullptr, &mVSCBufferPerObjectData, 0, 0);
+//
+//		ID3D11Buffer* VSConstantBuffers[] = { mVSCBufferPerFrame.Get(), mVSCBufferPerObject.Get() };
+//		direct3DDeviceContext->VSSetConstantBuffers(0, ARRAYSIZE(VSConstantBuffers), VSConstantBuffers);
+//
+//		mPSCBufferPerFrameData.CameraPosition = mCamera->Position();
+//		direct3DDeviceContext->UpdateSubresource(mPSCBufferPerFrame.Get(), 0, nullptr, &mPSCBufferPerFrameData, 0, 0);
+//
+//		ID3D11Buffer* PSConstantBuffers[] = { mPSCBufferPerFrame.Get(), mPSCBufferPerObject.Get() };
+//		direct3DDeviceContext->PSSetConstantBuffers(0, ARRAYSIZE(PSConstantBuffers), PSConstantBuffers);
+//
+//		ID3D11ShaderResourceView* PSShaderResources[] = { mColorTexture.Get(), mSpecularMap.Get() };
+//		direct3DDeviceContext->PSSetShaderResources(0, ARRAYSIZE(PSShaderResources), PSShaderResources);
+//		direct3DDeviceContext->PSSetSamplers(0, 1, SamplerStates::TrilinearWrap.GetAddressOf());
+//
+//		direct3DDeviceContext->DrawIndexed(mIndexCount, 0, 0);
 
 		mProxyModel->Draw(gameTime);
 
@@ -187,6 +193,11 @@ namespace Rendering
 		mSpriteFont->DrawString(mSpriteBatch.get(), helpLabel.str().c_str(), mTextPosition);
 		mSpriteBatch->End();
 		mRenderStateHelper.RestoreAll();
+	}
+
+	Library::PointLight& PointLightDemo::GetPointLight() 
+	{
+		return mPointLight;
 	}
 
 	void PointLightDemo::CreateVertexBuffer(const Mesh& mesh, ID3D11Buffer** vertexBuffer) const
@@ -222,6 +233,7 @@ namespace Rendering
 
 	void PointLightDemo::UpdateAmbientLight(const GameTime& gameTime)
 	{
+		UNREFERENCED_PARAMETER(gameTime);
 		static float ambientIntensity = mPSCBufferPerFrameData.AmbientColor.x;
 
 		assert(mKeyboard != nullptr);
@@ -246,6 +258,7 @@ namespace Rendering
 
 	void PointLightDemo::UpdatePointLight(const GameTime& gameTime)
 	{
+		UNREFERENCED_PARAMETER(gameTime);
 		static float lightIntensity = mPSCBufferPerFrameData.LightColor.x;
 
 		assert(mKeyboard != nullptr);
@@ -254,10 +267,10 @@ namespace Rendering
 		bool updateCBuffer = false;
 
 		// Update point light intensity
-		if (mKeyboard->IsKeyDown(Keys::Home) && lightIntensity < 1.0f)
+		if (mKeyboard->IsKeyDown(Keys::Home) && lightIntensity < 2.0f)
 		{
 			lightIntensity += elapsedTime;
-			lightIntensity = min(lightIntensity, 1.0f);
+			lightIntensity = min(lightIntensity, 2.0f);
 
 			mPSCBufferPerFrameData.LightColor = XMFLOAT3(lightIntensity, lightIntensity, lightIntensity);
 			mPointLight.SetColor(mPSCBufferPerFrameData.LightColor.x, mPSCBufferPerFrameData.LightColor.y, mPSCBufferPerFrameData.LightColor.z, 1.0f);

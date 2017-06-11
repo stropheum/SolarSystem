@@ -40,6 +40,9 @@ namespace Rendering
 		mPointLightDemo = make_shared<PointLightDemo>(*this, mCamera);
 		mComponents.push_back(mPointLightDemo);
 
+		mCelestialBody = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight());
+		mComponents.push_back(mCelestialBody);
+
 		Game::Initialize();
 
 		mFpsComponent = make_shared<FpsComponent>(*this);

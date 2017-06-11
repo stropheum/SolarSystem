@@ -4,6 +4,7 @@
 #include "RenderStateHelper.h"
 #include <windows.h>
 #include <functional>
+#include "CelestialBody.h"
 
 namespace Library
 {
@@ -42,5 +43,6 @@ namespace Rendering
 		std::shared_ptr<Library::Camera> mCamera;
 		std::shared_ptr<Library::Grid> mGrid;
 		std::shared_ptr<PointLightDemo> mPointLightDemo;
+		std::shared_ptr<CelestialBody> mCelestialBody;
 	};
 }
