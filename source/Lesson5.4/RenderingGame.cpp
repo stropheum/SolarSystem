@@ -6,7 +6,7 @@ using namespace Library;
 
 namespace Rendering
 {
-	const XMVECTORF32 RenderingGame::BackgroundColor = Colors::RoyalBlue;
+	const XMVECTORF32 RenderingGame::BackgroundColor = Colors::SteelBlue;
 
 	RenderingGame::RenderingGame(std::function<void*()> getWindowCallback, std::function<void(SIZE&)> getRenderTargetSizeCallback) :
 		Game(getWindowCallback, getRenderTargetSizeCallback), mRenderStateHelper(*this)
@@ -39,7 +39,6 @@ namespace Rendering
 
 		mPointLightDemo = make_shared<PointLightDemo>(*this, mCamera);
 		mComponents.push_back(mPointLightDemo);
-
 		
 		mMercury = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::MercuryData);
 		mComponents.push_back(mMercury);

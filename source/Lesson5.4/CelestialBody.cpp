@@ -9,15 +9,15 @@ using namespace DirectX;
 const float CelestialBody::ModelRotationRate = XM_PI;
 const float CelestialBody::OrbitalScale = 100.0f;
 
-const CelestialBody::PlanetaryData CelestialBody::MercuryData(0.382f, -57.9f, (1.0f / 58.646f), (1.0f / 87.969f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::VenusData(0.949f, -108.2f, (1.0f / 243.01f), (1.0f / 224.70f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::MercuryData(0.382f, -57.9f, (1.0f / 58.646f), (1.0f / 87.969f), L"Content\\Textures\\mercury.dds");
+const CelestialBody::PlanetaryData CelestialBody::VenusData(0.949f, -108.2f, (1.0f / 243.01f), (1.0f / 224.70f), L"Content\\Textures\\venus.dds");
 const CelestialBody::PlanetaryData CelestialBody::EarthData(1.0f, -149.6f, (1.0f / 23.9345f), (1.0f / 365.256f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::MarsData(0.532f, -227.9f, (1.0f / 24.623f), (1.0f / 686.98f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::JupiterData(11.19f, -778.6f, (1.0f / 9.842f), (1.0f / 4328.9f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::SaturnData(9.26f, -1433.0f, (1.0f / 10.233f), (1.0f / 10734.65f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::UranusData(4.01f, -2873.0f, (1.0f / 17.2f), (1.0f / 30674.6f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::NeptuneData(3.88f, -4495.0f, (1.0f / 16.11f), (1.0f / 59757.8f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::PlutoData(0.18f, -5906.0f, (1.0f / 153.2976f), (1.0f / 90494.45f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::MarsData(0.532f, -227.9f, (1.0f / 24.623f), (1.0f / 686.98f), L"Content\\Textures\\mars.dds");
+const CelestialBody::PlanetaryData CelestialBody::JupiterData(11.19f, -778.6f, (1.0f / 9.842f), (1.0f / 4328.9f), L"Content\\Textures\\jupiter.dds");
+const CelestialBody::PlanetaryData CelestialBody::SaturnData(9.26f, -1433.0f, (1.0f / 10.233f), (1.0f / 10734.65f), L"Content\\Textures\\saturn.dds");
+const CelestialBody::PlanetaryData CelestialBody::UranusData(4.01f, -2873.0f, (1.0f / 17.2f), (1.0f / 30674.6f), L"Content\\Textures\\uranus.dds");
+const CelestialBody::PlanetaryData CelestialBody::NeptuneData(3.88f, -4495.0f, (1.0f / 16.11f), (1.0f / 59757.8f), L"Content\\Textures\\neptune.dds");
+const CelestialBody::PlanetaryData CelestialBody::PlutoData(0.18f, -5906.0f, (1.0f / 153.2976f), (1.0f / 90494.45f), L"Content\\Textures\\pluto.dds");
 
 CelestialBody::CelestialBody(Library::Game& game, const std::shared_ptr<Library::Camera>& camera, 
 	Library::PointLight& lightReference, const PlanetaryData& planetaryData):
@@ -80,11 +80,14 @@ void CelestialBody::Initialize()
 	ThrowIfFailed(mGame->Direct3DDevice()->CreateBuffer(&constantBufferDesc, nullptr, mPSCBufferPerObject.ReleaseAndGetAddressOf()), "ID3D11Device::CreateBuffer() failed.");
 
 	// Load textures for the color and specular maps
-	wstring textureName = L"Content\\Textures\\EarthComposite.dds";
+	wstring textureName = mPlanetaryData.texturePath;
 	ThrowIfFailed(CreateDDSTextureFromFile(mGame->Direct3DDevice(), textureName.c_str(), nullptr, mColorTexture.ReleaseAndGetAddressOf()), "CreateDDSTextureFromFile() failed.");
 
-	textureName = L"Content\\Textures\\EarthSpecularMap.png";
-	ThrowIfFailed(CreateWICTextureFromFile(mGame->Direct3DDevice(), textureName.c_str(), nullptr, mSpecularMap.ReleaseAndGetAddressOf()), "CreateWICTextureFromFile() failed.");
+	if (textureName == L"Content\\Textures\\EarthComposite.dds")
+	{	// Only apply specular map if we're rendering earth (yeah, gross)
+		textureName = L"Content\\Textures\\EarthSpecularMap.png";
+		ThrowIfFailed(CreateWICTextureFromFile(mGame->Direct3DDevice(), textureName.c_str(), nullptr, mSpecularMap.ReleaseAndGetAddressOf()), "CreateWICTextureFromFile() failed.");
+	}
 
 	// Setup the point light
 	mVSCBufferPerFrameData.LightPosition = mPointLight.Position();

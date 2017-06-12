@@ -177,22 +177,22 @@ namespace Rendering
 		mProxyModel->Draw(gameTime);
 
 		// Draw help text
-		mRenderStateHelper.SaveAll();
-		mSpriteBatch->Begin();
-
-		wostringstream helpLabel;
-		helpLabel << "Ambient Intensity (+PgUp/-PgDn): " << mPSCBufferPerFrameData.AmbientColor.x << "\n";
-		helpLabel << L"Specular Intensity (+Insert/-Delete): " << mPSCBufferPerObjectData.SpecularColor.x << "\n";
-		helpLabel << L"Specular Power (+O/-P): " << mPSCBufferPerObjectData.SpecularPower << "\n";
-		helpLabel << L"Point Light Intensity (+Home/-End): " << mPSCBufferPerFrameData.LightColor.x << "\n";
-		helpLabel << L"Point Light Radius (+V/-B): " << mVSCBufferPerFrameData.LightRadius << "\n";
-		helpLabel << L"Move Point Light (8/2, 4/6, 3/9)" << "\n";
-		helpLabel << L"Toggle Grid (G)" << "\n";
-		helpLabel << L"Toggle Animation (Space)" << "\n";
-	
-		mSpriteFont->DrawString(mSpriteBatch.get(), helpLabel.str().c_str(), mTextPosition);
-		mSpriteBatch->End();
-		mRenderStateHelper.RestoreAll();
+//		mRenderStateHelper.SaveAll();
+//		mSpriteBatch->Begin();
+//
+//		wostringstream helpLabel;
+//		helpLabel << "Ambient Intensity (+PgUp/-PgDn): " << mPSCBufferPerFrameData.AmbientColor.x << "\n";
+//		helpLabel << L"Specular Intensity (+Insert/-Delete): " << mPSCBufferPerObjectData.SpecularColor.x << "\n";
+//		helpLabel << L"Specular Power (+O/-P): " << mPSCBufferPerObjectData.SpecularPower << "\n";
+//		helpLabel << L"Point Light Intensity (+Home/-End): " << mPSCBufferPerFrameData.LightColor.x << "\n";
+//		helpLabel << L"Point Light Radius (+V/-B): " << mVSCBufferPerFrameData.LightRadius << "\n";
+//		helpLabel << L"Move Point Light (8/2, 4/6, 3/9)" << "\n";
+//		helpLabel << L"Toggle Grid (G)" << "\n";
+//		helpLabel << L"Toggle Animation (Space)" << "\n";
+//	
+//		mSpriteFont->DrawString(mSpriteBatch.get(), helpLabel.str().c_str(), mTextPosition);
+//		mSpriteBatch->End();
+//		mRenderStateHelper.RestoreAll();
 	}
 
 	Library::PointLight& PointLightDemo::GetPointLight() 
