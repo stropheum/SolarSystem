@@ -6,7 +6,7 @@ using namespace Library;
 
 namespace Rendering
 {
-	const XMVECTORF32 RenderingGame::BackgroundColor = Colors::SteelBlue;
+	const XMVECTORF32 RenderingGame::BackgroundColor = { 0.1f, 0.1f, 0.1f, 1.000000000f };//Colors::SteelBlue;
 
 	RenderingGame::RenderingGame(std::function<void*()> getWindowCallback, std::function<void(SIZE&)> getRenderTargetSizeCallback) :
 		Game(getWindowCallback, getRenderTargetSizeCallback), mRenderStateHelper(*this)
@@ -33,9 +33,6 @@ namespace Rendering
 		mCamera = make_shared<FirstPersonCamera>(*this);
 		mComponents.push_back(mCamera);
 		mServices.AddService(Camera::TypeIdClass(), mCamera.get());
-
-		mGrid = make_shared<Grid>(*this, mCamera, 1000, 500, XMFLOAT4(0.961f, 0.871f, 0.702f, 1.0f));
-		mComponents.push_back(mGrid);
 
 		mPointLightDemo = make_shared<PointLightDemo>(*this, mCamera);
 		mComponents.push_back(mPointLightDemo);
@@ -66,6 +63,33 @@ namespace Rendering
 
 		mPluto = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::PlutoData);
 		mComponents.push_back(mPluto);
+
+		mMercuryPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::MercuryData.distance);
+		mComponents.push_back(mMercuryPath);
+
+		mVenusPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::VenusData.distance);
+		mComponents.push_back(mVenusPath);
+
+		mEarthPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::EarthData.distance);
+		mComponents.push_back(mEarthPath);
+
+		mMarsPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::MarsData.distance);
+		mComponents.push_back(mMarsPath);
+
+		mJupiterPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::JupiterData.distance);
+		mComponents.push_back(mJupiterPath);
+
+		mSaturnPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::SaturnData.distance);
+		mComponents.push_back(mSaturnPath);
+
+		mUranusPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::UranusData.distance);
+		mComponents.push_back(mUranusPath);
+
+		mNeptunePath = make_shared<Library::Path>(*this, mCamera, CelestialBody::NeptuneData.distance);
+		mComponents.push_back(mNeptunePath);
+
+		mPlutoPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::PlutoData.distance);
+		mComponents.push_back(mPlutoPath);
 
 		Game::Initialize();
 

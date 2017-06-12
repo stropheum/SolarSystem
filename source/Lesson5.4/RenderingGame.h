@@ -5,9 +5,11 @@
 #include <windows.h>
 #include <functional>
 #include "CelestialBody.h"
+#include "Path.h"
 
 namespace Library
 {
+	class Path;
 	class KeyboardComponent;
 	class MouseComponent;
 	class GamePadComponent;
@@ -53,5 +55,15 @@ namespace Rendering
 		std::shared_ptr<CelestialBody> mUranus;
 		std::shared_ptr<CelestialBody> mNeptune;
 		std::shared_ptr<CelestialBody> mPluto;
+
+		std::shared_ptr<Library::Path> mMercuryPath;
+		std::shared_ptr<Library::Path> mVenusPath;
+		std::shared_ptr<Library::Path> mEarthPath;
+		std::shared_ptr<Library::Path> mMarsPath;
+		std::shared_ptr<Library::Path> mJupiterPath;
+		std::shared_ptr<Library::Path> mSaturnPath;
+		std::shared_ptr<Library::Path> mUranusPath;
+		std::shared_ptr<Library::Path> mNeptunePath;
+		std::shared_ptr<Library::Path> mPlutoPath;
 	};
 }

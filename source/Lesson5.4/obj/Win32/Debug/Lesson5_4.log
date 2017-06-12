@@ -1,4 +1,5 @@
-﻿  A subdirectory or file C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\Content already exists.
+﻿C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.CppBuild.targets(392,5): warning MSB8028: The intermediate directory (C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\obj\Win32\Debug\) contains files shared from another project (Lesson5_4.vcxproj).  This can lead to incorrect clean and rebuild behavior.
+  A subdirectory or file C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\Content already exists.
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Fonts\Arial_14_Regular.spritefont
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Models\Sphere.obj.bin
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\BasicPS.cso
@@ -26,6 +27,8 @@
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\uranus.dds
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\venus.dds
   15 File(s) copied
-  CelestialBody.cpp
-  Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\Lesson5_4.exe
-  Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\Lesson5_4.pdb (Full PDB)
+  RenderingGame.cpp
+  Program.cpp
+  Generating Code...
+  Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\SolarSystem.exe
+  Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\SolarSystem.pdb (Full PDB)

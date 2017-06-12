@@ -20,12 +20,14 @@
     <ClCompile Include="PointLightDemo.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="CelestialBody.cpp" />
+    <ClCompile Include="Path.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderingGame.h" />
     <ClInclude Include="PointLightDemo.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="CelestialBody.h" />
+    <ClInclude Include="Path.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Models\PointLightProxy.obj.bin">
