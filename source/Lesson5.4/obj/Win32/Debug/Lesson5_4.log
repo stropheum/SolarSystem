@@ -14,15 +14,6 @@
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Models\Sphere.obj.bin
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\PointLightDemoPS.hlsl
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\PointLightDemoVS.hlsl
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_jupiter.jpg
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_mars.jpg
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_mercury.jpg
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_moon.jpg
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_neptune.jpg
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_saturn.jpg
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_uranus.jpg
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_venus_atmosphere.jpg
-  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\2k_venus_surface.jpg
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\EarthComposite.dds
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\EarthSpecularMap.png
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\jupiter.dds
@@ -34,7 +25,7 @@
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\saturn.dds
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\uranus.dds
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\venus.dds
-  24 File(s) copied
-  RenderingGame.cpp
+  15 File(s) copied
+  CelestialBody.cpp
   Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\Lesson5_4.exe
   Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\Lesson5_4.pdb (Full PDB)

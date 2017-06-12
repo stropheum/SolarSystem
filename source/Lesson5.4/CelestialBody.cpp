@@ -9,20 +9,20 @@ using namespace DirectX;
 const float CelestialBody::ModelRotationRate = XM_PI;
 const float CelestialBody::OrbitalScale = 100.0f;
 
-const CelestialBody::PlanetaryData CelestialBody::MercuryData(0.382f, -57.9f, (1.0f / 58.646f), (1.0f / 87.969f), L"Content\\Textures\\mercury.dds");
-const CelestialBody::PlanetaryData CelestialBody::VenusData(0.949f, -108.2f, (1.0f / 243.01f), (1.0f / 224.70f), L"Content\\Textures\\venus.dds");
-const CelestialBody::PlanetaryData CelestialBody::EarthData(1.0f, -149.6f, (1.0f / 23.9345f), (1.0f / 365.256f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::MarsData(0.532f, -227.9f, (1.0f / 24.623f), (1.0f / 686.98f), L"Content\\Textures\\mars.dds");
-const CelestialBody::PlanetaryData CelestialBody::JupiterData(11.19f, -778.6f, (1.0f / 9.842f), (1.0f / 4328.9f), L"Content\\Textures\\jupiter.dds");
-const CelestialBody::PlanetaryData CelestialBody::SaturnData(9.26f, -1433.0f, (1.0f / 10.233f), (1.0f / 10734.65f), L"Content\\Textures\\saturn.dds");
-const CelestialBody::PlanetaryData CelestialBody::UranusData(4.01f, -2873.0f, (1.0f / 17.2f), (1.0f / 30674.6f), L"Content\\Textures\\uranus.dds");
-const CelestialBody::PlanetaryData CelestialBody::NeptuneData(3.88f, -4495.0f, (1.0f / 16.11f), (1.0f / 59757.8f), L"Content\\Textures\\neptune.dds");
-const CelestialBody::PlanetaryData CelestialBody::PlutoData(0.18f, -5906.0f, (1.0f / 153.2976f), (1.0f / 90494.45f), L"Content\\Textures\\pluto.dds");
+const CelestialBody::PlanetaryData CelestialBody::MercuryData(0.382f, -57.9f, (1.0f / 58.646f), (1.0f / 87.969f), 0.0f, L"Content\\Textures\\mercury.dds");
+const CelestialBody::PlanetaryData CelestialBody::VenusData(0.949f, -108.2f, (1.0f / 243.01f), (1.0f / 224.70f), 3.0962f, L"Content\\Textures\\venus.dds");
+const CelestialBody::PlanetaryData CelestialBody::EarthData(1.0f, -149.6f, (1.0f / 23.9345f), (1.0f / 365.256f), 0.40613812f, L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::MarsData(0.532f, -227.9f, (1.0f / 24.623f), (1.0f / 686.98f), 0.43825218f, L"Content\\Textures\\mars.dds");
+const CelestialBody::PlanetaryData CelestialBody::JupiterData(11.19f, -778.6f, (1.0f / 9.842f), (1.0f / 4328.9f), 0.05305801f, L"Content\\Textures\\jupiter.dds");
+const CelestialBody::PlanetaryData CelestialBody::SaturnData(9.26f, -1433.0f, (1.0f / 10.233f), (1.0f / 10734.65f), 0.471239f, L"Content\\Textures\\saturn.dds");
+const CelestialBody::PlanetaryData CelestialBody::UranusData(4.01f, -2873.0f, (1.0f / 17.2f), (1.0f / 30674.6f), 1.708677f, L"Content\\Textures\\uranus.dds");
+const CelestialBody::PlanetaryData CelestialBody::NeptuneData(3.88f, -4495.0f, (1.0f / 16.11f), (1.0f / 59757.8f), 0.5166175f, L"Content\\Textures\\neptune.dds");
+const CelestialBody::PlanetaryData CelestialBody::PlutoData(0.18f, -5906.0f, (1.0f / 153.2976f), (1.0f / 90494.45f), 2.1293f, L"Content\\Textures\\pluto.dds");
 
 CelestialBody::CelestialBody(Library::Game& game, const std::shared_ptr<Library::Camera>& camera, 
 	Library::PointLight& lightReference, const PlanetaryData& planetaryData):
-	DrawableGameComponent(game, camera), mWorldMatrix(MatrixHelper::Identity), mIndexCount(0), 
-	mPointLight(lightReference), mPlanetaryData(planetaryData), mCurrentRotation(0.0f), mCurrentOrbit(0.0f)
+	DrawableGameComponent(game, camera), mWorldMatrix(MatrixHelper::Identity), mIndexCount(0),
+	mPointLight(lightReference), mPlanetaryData(planetaryData), mKeyboard(nullptr), mAnimationEnabled(false), mCurrentRotation(0.0f), mCurrentOrbit(0.0f)
 {
 }
 
@@ -102,17 +102,15 @@ void CelestialBody::Initialize()
 
 void CelestialBody::Update(const Library::GameTime& gameTime)
 {
-//	static float rotation = 0.0f;
-//	static float orbit = 0.0f;
-
 	if (mAnimationEnabled)
 	{
 		mCurrentRotation += gameTime.ElapsedGameTimeSeconds().count() * mPlanetaryData.rotation * OrbitalScale;
 		mCurrentOrbit += gameTime.ElapsedGameTimeSeconds().count() * mPlanetaryData.orbit * OrbitalScale;
 		
-		XMStoreFloat4x4(&mWorldMatrix, 
+		XMStoreFloat4x4(&mWorldMatrix,
 			XMMatrixScaling(mPlanetaryData.scale, mPlanetaryData.scale, mPlanetaryData.scale) *
-			XMMatrixRotationY(mCurrentRotation) * 
+			XMMatrixRotationY(mCurrentRotation) *
+			XMMatrixRotationRollPitchYaw(0.0f, 0.0f, mPlanetaryData.tilt) *
 			XMMatrixTranslation(0.0f, 0.0f, mPlanetaryData.distance) *
 			XMMatrixRotationY(mCurrentOrbit)
 			);

@@ -4,13 +4,14 @@ class CelestialBody : public Library::DrawableGameComponent
 public:
 	typedef struct PlanetaryData
 	{
-		PlanetaryData(float s, float d, float r, float o, std::wstring tp):
-			scale(s), distance(d), rotation(r), orbit(o), texturePath(tp)
+		PlanetaryData(float s, float d, float r, float o, float t, std::wstring tp):
+			scale(s), distance(d), rotation(r), orbit(o), tilt(t), texturePath(tp)
 		{}
 		float scale;
 		float distance;
 		float rotation;
 		float orbit;
+		float tilt;
 		std::wstring texturePath;
 	} PlanetaryData;
 
