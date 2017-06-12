@@ -6,7 +6,7 @@ using namespace Library;
 
 namespace Rendering
 {
-	const XMVECTORF32 RenderingGame::BackgroundColor = Colors::CornflowerBlue;
+	const XMVECTORF32 RenderingGame::BackgroundColor = Colors::RoyalBlue;
 
 	RenderingGame::RenderingGame(std::function<void*()> getWindowCallback, std::function<void(SIZE&)> getRenderTargetSizeCallback) :
 		Game(getWindowCallback, getRenderTargetSizeCallback), mRenderStateHelper(*this)
@@ -34,17 +34,39 @@ namespace Rendering
 		mComponents.push_back(mCamera);
 		mServices.AddService(Camera::TypeIdClass(), mCamera.get());
 
-		mGrid = make_shared<Grid>(*this, mCamera, 1000, 100, XMFLOAT4(0.961f, 0.871f, 0.702f, 1.0f));
+		mGrid = make_shared<Grid>(*this, mCamera, 1000, 500, XMFLOAT4(0.961f, 0.871f, 0.702f, 1.0f));
 		mComponents.push_back(mGrid);
 
 		mPointLightDemo = make_shared<PointLightDemo>(*this, mCamera);
 		mComponents.push_back(mPointLightDemo);
 
+		
 		mMercury = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::MercuryData);
 		mComponents.push_back(mMercury);
 
+		mVenus = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::VenusData);
+		mComponents.push_back(mVenus);
+
 		mEarth = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::EarthData);
 		mComponents.push_back(mEarth);
+
+		mMars = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::MarsData);
+		mComponents.push_back(mMars);
+
+		mJupiter = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::JupiterData);
+		mComponents.push_back(mJupiter);
+
+		mSaturn = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::SaturnData);
+		mComponents.push_back(mSaturn);
+
+		mUranus = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::UranusData);
+		mComponents.push_back(mUranus);
+
+		mNeptune = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::NeptuneData);
+		mComponents.push_back(mNeptune);
+
+		mPluto = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::PlutoData);
+		mComponents.push_back(mPluto);
 
 		Game::Initialize();
 

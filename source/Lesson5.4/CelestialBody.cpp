@@ -7,14 +7,22 @@ using namespace Library;
 using namespace DirectX;
 
 const float CelestialBody::ModelRotationRate = XM_PI;
+const float CelestialBody::OrbitalScale = 100.0f;
 
-const CelestialBody::PlanetaryData CelestialBody::MercuryData(0.382f, -108.2f, (1.0f / 58.646f), (1.0f / 87.969f), L"Content\\Textures\\EarthComposite.dds");
-const CelestialBody::PlanetaryData CelestialBody::EarthData(1.0f, -149.0f, (1.0f / 23.9345f), (1.0f / 365.256f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::MercuryData(0.382f, -57.9f, (1.0f / 58.646f), (1.0f / 87.969f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::VenusData(0.949f, -108.2f, (1.0f / 243.01f), (1.0f / 224.70f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::EarthData(1.0f, -149.6f, (1.0f / 23.9345f), (1.0f / 365.256f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::MarsData(0.532f, -227.9f, (1.0f / 24.623f), (1.0f / 686.98f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::JupiterData(11.19f, -778.6f, (1.0f / 9.842f), (1.0f / 4328.9f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::SaturnData(9.26f, -1433.0f, (1.0f / 10.233f), (1.0f / 10734.65f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::UranusData(4.01f, -2873.0f, (1.0f / 17.2f), (1.0f / 30674.6f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::NeptuneData(3.88f, -4495.0f, (1.0f / 16.11f), (1.0f / 59757.8f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::PlutoData(0.18f, -5906.0f, (1.0f / 153.2976f), (1.0f / 90494.45f), L"Content\\Textures\\EarthComposite.dds");
 
 CelestialBody::CelestialBody(Library::Game& game, const std::shared_ptr<Library::Camera>& camera, 
 	Library::PointLight& lightReference, const PlanetaryData& planetaryData):
 	DrawableGameComponent(game, camera), mWorldMatrix(MatrixHelper::Identity), mIndexCount(0), 
-	mPointLight(lightReference), mPlanetaryData(planetaryData)
+	mPointLight(lightReference), mPlanetaryData(planetaryData), mCurrentRotation(0.0f), mCurrentOrbit(0.0f)
 {
 }
 
@@ -24,6 +32,9 @@ CelestialBody::~CelestialBody()
 
 void CelestialBody::Initialize()
 {
+	// Retrieve the keyboard service
+	mKeyboard = reinterpret_cast<KeyboardComponent*>(mGame->Services().GetService(KeyboardComponent::TypeIdClass()));
+
 	// Load a compiled vertex shader
 	vector<char> compiledVertexShader;
 	Utility::LoadBinaryFile(L"Content\\Shaders\\PointLightDemoVS.cso", compiledVertexShader);
@@ -88,29 +99,20 @@ void CelestialBody::Initialize()
 
 void CelestialBody::Update(const Library::GameTime& gameTime)
 {
-	static float angle = 0.0f;
-	static float orbit = 0.0f;
+//	static float rotation = 0.0f;
+//	static float orbit = 0.0f;
 
-	if (true)//mAnimationEnabled)
+	if (mAnimationEnabled)
 	{
-		angle += gameTime.ElapsedGameTimeSeconds().count() * mPlanetaryData.rotation * 10/*orbital scale*/;
-		orbit += gameTime.ElapsedGameTimeSeconds().count() * mPlanetaryData.orbit * 10/*orbital scale*/;
+		mCurrentRotation += gameTime.ElapsedGameTimeSeconds().count() * mPlanetaryData.rotation * OrbitalScale;
+		mCurrentOrbit += gameTime.ElapsedGameTimeSeconds().count() * mPlanetaryData.orbit * OrbitalScale;
 		
 		XMStoreFloat4x4(&mWorldMatrix, 
 			XMMatrixScaling(mPlanetaryData.scale, mPlanetaryData.scale, mPlanetaryData.scale) *
-			XMMatrixRotationY(angle) * 
+			XMMatrixRotationY(mCurrentRotation) * 
 			XMMatrixTranslation(0.0f, 0.0f, mPlanetaryData.distance) *
-			XMMatrixRotationY(orbit));
-//		XMFLOAT4X4 translation(
-//			2, 0, 0, 0,
-//			0, 2, 0, 0,
-//			0, 0, 2, 0,
-//			0, 0, 0, 1);
-//		mWorldMatrix._14 *= 200;
-//		mWorldMatrix._24 *= 1;
-//		mWorldMatrix._34 *= 1;
-//		mWorldMatrix._44 *= 1;
-		
+			XMMatrixRotationY(mCurrentOrbit)
+			);
 	}
 
 	mVSCBufferPerFrameData.LightPosition = mPointLight.Position();
@@ -118,17 +120,13 @@ void CelestialBody::Update(const Library::GameTime& gameTime)
 	mPSCBufferPerFrameData.LightPosition = mPointLight.Position();
 	mPSCBufferPerFrameData.LightColor = ColorHelper::ToFloat3(mPointLight.Color(), true);
 
-//	if (mKeyboard != nullptr)
-//	{
-//		if (mKeyboard->WasKeyPressedThisFrame(Keys::Space))
-//		{
-//			ToggleAnimation();
-//		}
-//
-//		UpdateAmbientLight(gameTime);
-//		UpdatePointLight(gameTime);
-//		UpdateSpecularLight(gameTime);
-//	}
+	if (mKeyboard != nullptr)
+	{
+		if (mKeyboard->WasKeyPressedThisFrame(Keys::Space))
+		{
+			ToggleAnimation();
+		}
+	}
 }
 
 void CelestialBody::Draw(const Library::GameTime& gameTime)
@@ -195,4 +193,9 @@ void CelestialBody::CreateVertexBuffer(const Mesh& mesh, ID3D11Buffer** vertexBu
 	D3D11_SUBRESOURCE_DATA vertexSubResourceData = { 0 };
 	vertexSubResourceData.pSysMem = &vertices[0];
 	ThrowIfFailed(mGame->Direct3DDevice()->CreateBuffer(&vertexBufferDesc, &vertexSubResourceData, vertexBuffer), "ID3D11Device::CreateBuffer() failed.");
+}
+
+void CelestialBody::ToggleAnimation()
+{
+	mAnimationEnabled = !mAnimationEnabled;
 }

@@ -94,7 +94,10 @@ private:
 			SpecularColor(specularColor), SpecularPower(specularPower) { }
 	};
 
+	void ToggleAnimation();
+
 	static const float ModelRotationRate;
+	static const float OrbitalScale;
 
 	DirectX::XMFLOAT4X4 mWorldMatrix;
 	PSCBufferPerFrame mPSCBufferPerFrameData;
@@ -115,5 +118,9 @@ private:
 	std::uint32_t mIndexCount;
 	Library::PointLight& mPointLight;
 	PlanetaryData mPlanetaryData;
+	Library::KeyboardComponent* mKeyboard;
+	bool mAnimationEnabled;
+	float mCurrentRotation;
+	float mCurrentOrbit;
 };
 
