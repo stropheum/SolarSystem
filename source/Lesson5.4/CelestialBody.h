@@ -2,7 +2,29 @@
 class CelestialBody : public Library::DrawableGameComponent
 {
 public:
-	CelestialBody(Library::Game & game, const std::shared_ptr<Library::Camera>& camera, Library::PointLight& lightReference);
+	typedef struct PlanetaryData
+	{
+		PlanetaryData(float s, float d, float r, float o, std::wstring tp):
+			scale(s), distance(d), rotation(r), orbit(o), texturePath(tp)
+		{}
+		float scale;
+		float distance;
+		float rotation;
+		float orbit;
+		std::wstring texturePath;
+	} PlanetaryData;
+
+	const static PlanetaryData MercuryData;
+	const static PlanetaryData VenusData;
+	const static PlanetaryData EarthData;
+	const static PlanetaryData MarsData;
+	const static PlanetaryData JupiterData;
+	const static PlanetaryData SaturnData;
+	const static PlanetaryData UranusData;
+	const static PlanetaryData NeptuneData;
+	const static PlanetaryData PlutoData;
+	
+	CelestialBody(Library::Game & game, const std::shared_ptr<Library::Camera>& camera, Library::PointLight& lightReference, const PlanetaryData& planetaryData);
 	~CelestialBody();
 	CelestialBody(const CelestialBody& rhs) = delete;
 	CelestialBody& operator=(const CelestialBody& rhs) = delete;
@@ -92,5 +114,6 @@ private:
 	Microsoft::WRL::ComPtr<ID3D11ShaderResourceView> mSpecularMap;
 	std::uint32_t mIndexCount;
 	Library::PointLight& mPointLight;
+	PlanetaryData mPlanetaryData;
 };
 

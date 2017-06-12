@@ -34,14 +34,17 @@ namespace Rendering
 		mComponents.push_back(mCamera);
 		mServices.AddService(Camera::TypeIdClass(), mCamera.get());
 
-		mGrid = make_shared<Grid>(*this, mCamera);
+		mGrid = make_shared<Grid>(*this, mCamera, 1000, 100, XMFLOAT4(0.961f, 0.871f, 0.702f, 1.0f));
 		mComponents.push_back(mGrid);
 
 		mPointLightDemo = make_shared<PointLightDemo>(*this, mCamera);
 		mComponents.push_back(mPointLightDemo);
 
-		mCelestialBody = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight());
-		mComponents.push_back(mCelestialBody);
+		mMercury = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::MercuryData);
+		mComponents.push_back(mMercury);
+
+		mEarth = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::EarthData);
+		mComponents.push_back(mEarth);
 
 		Game::Initialize();
 

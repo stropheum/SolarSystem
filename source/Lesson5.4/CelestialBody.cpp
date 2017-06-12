@@ -8,8 +8,13 @@ using namespace DirectX;
 
 const float CelestialBody::ModelRotationRate = XM_PI;
 
-CelestialBody::CelestialBody(Library::Game& game, const std::shared_ptr<Library::Camera>& camera, Library::PointLight& lightReference):
-	DrawableGameComponent(game, camera), mWorldMatrix(MatrixHelper::Identity), mIndexCount(0), mPointLight(lightReference)
+const CelestialBody::PlanetaryData CelestialBody::MercuryData(0.382f, -108.2f, (1.0f / 58.646f), (1.0f / 87.969f), L"Content\\Textures\\EarthComposite.dds");
+const CelestialBody::PlanetaryData CelestialBody::EarthData(1.0f, -149.0f, (1.0f / 23.9345f), (1.0f / 365.256f), L"Content\\Textures\\EarthComposite.dds");
+
+CelestialBody::CelestialBody(Library::Game& game, const std::shared_ptr<Library::Camera>& camera, 
+	Library::PointLight& lightReference, const PlanetaryData& planetaryData):
+	DrawableGameComponent(game, camera), mWorldMatrix(MatrixHelper::Identity), mIndexCount(0), 
+	mPointLight(lightReference), mPlanetaryData(planetaryData)
 {
 }
 
@@ -88,12 +93,13 @@ void CelestialBody::Update(const Library::GameTime& gameTime)
 
 	if (true)//mAnimationEnabled)
 	{
-		angle += gameTime.ElapsedGameTimeSeconds().count() * ModelRotationRate;
-		orbit += gameTime.ElapsedGameTimeSeconds().count() * (1.0f / 23.9345f) * 10/*orbital scale*/;
+		angle += gameTime.ElapsedGameTimeSeconds().count() * mPlanetaryData.rotation * 10/*orbital scale*/;
+		orbit += gameTime.ElapsedGameTimeSeconds().count() * mPlanetaryData.orbit * 10/*orbital scale*/;
 		
 		XMStoreFloat4x4(&mWorldMatrix, 
+			XMMatrixScaling(mPlanetaryData.scale, mPlanetaryData.scale, mPlanetaryData.scale) *
 			XMMatrixRotationY(angle) * 
-			XMMatrixTranslation(0.0f, 0.0f, -149.0f) *
+			XMMatrixTranslation(0.0f, 0.0f, mPlanetaryData.distance) *
 			XMMatrixRotationY(orbit));
 //		XMFLOAT4X4 translation(
 //			2, 0, 0, 0,

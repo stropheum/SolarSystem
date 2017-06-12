@@ -43,6 +43,15 @@ namespace Rendering
 		std::shared_ptr<Library::Camera> mCamera;
 		std::shared_ptr<Library::Grid> mGrid;
 		std::shared_ptr<PointLightDemo> mPointLightDemo;
-		std::shared_ptr<CelestialBody> mCelestialBody;
+
+		std::shared_ptr<CelestialBody> mMercury;
+		std::shared_ptr<CelestialBody> mVenus;
+		std::shared_ptr<CelestialBody> mEarth;
+		std::shared_ptr<CelestialBody> mMars;
+		std::shared_ptr<CelestialBody> mJupiter;
+		std::shared_ptr<CelestialBody> mSaturn;
+		std::shared_ptr<CelestialBody> mUranus;
+		std::shared_ptr<CelestialBody> mNeptune;
+		std::shared_ptr<CelestialBody> mPluto;
 	};
 }

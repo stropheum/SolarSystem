@@ -1,1 +1,8 @@
-﻿
+﻿  pch.cpp
+  Program.cpp
+  ModelProcessor.cpp
+  ModelMaterialProcessor.cpp
+  MeshProcessor.cpp
+  Generating Code...
+  ModelPipeline.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Tools\ModelPipeline\bin\Win32\Debug\ModelPipeline.exe
+  ModelPipeline.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Tools\ModelPipeline\bin\Win32\Debug\ModelPipeline.pdb (Full PDB)
