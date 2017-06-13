@@ -6,7 +6,7 @@ using namespace Library;
 
 namespace Rendering
 {
-	const XMVECTORF32 RenderingGame::BackgroundColor = { 0.1f, 0.1f, 0.1f, 1.000000000f };//Colors::SteelBlue;
+	const XMVECTORF32 RenderingGame::BackgroundColor = { 0.1f, 0.1f, 0.1f, 1.000000000f };
 
 	RenderingGame::RenderingGame(std::function<void*()> getWindowCallback, std::function<void(SIZE&)> getRenderTargetSizeCallback) :
 		Game(getWindowCallback, getRenderTargetSizeCallback), mRenderStateHelper(*this)
@@ -64,6 +64,9 @@ namespace Rendering
 		mPluto = make_shared<CelestialBody>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::PlutoData);
 		mComponents.push_back(mPluto);
 
+		mMoon = make_shared<Moon>(*this, mCamera, mPointLightDemo.get()->GetPointLight(), CelestialBody::EarthData, mEarth);
+		mComponents.push_back(mMoon);
+
 		mMercuryPath = make_shared<Library::Path>(*this, mCamera, CelestialBody::MercuryData.distance);
 		mComponents.push_back(mMercuryPath);
 
@@ -96,7 +99,7 @@ namespace Rendering
 		mFpsComponent = make_shared<FpsComponent>(*this);
 		mFpsComponent->Initialize();
 
-		mCamera->SetPosition(0.0f, 2.5f, 25.0f);
+		mCamera->SetPosition(0.0f, 10.0f, 100.0f);
 	}
 
 	void RenderingGame::Update(const GameTime &gameTime)

@@ -13,6 +13,8 @@
   10 File(s) copied
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Models\PointLightProxy.obj.bin
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Models\Sphere.obj.bin
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\AmbientLightingDemoPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\AmbientLightingDemoVS.hlsl
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\PointLightDemoPS.hlsl
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\PointLightDemoVS.hlsl
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\EarthComposite.dds
@@ -24,11 +26,10 @@
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\neptune.dds
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\pluto.dds
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\saturn.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\sun.dds
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\uranus.dds
   C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\venus.dds
-  15 File(s) copied
-  RenderingGame.cpp
-  Program.cpp
-  Generating Code...
+  18 File(s) copied
+  Moon.cpp
   Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\SolarSystem.exe
   Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\Win32\Debug\SolarSystem.pdb (Full PDB)

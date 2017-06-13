@@ -24,9 +24,10 @@ public:
 	const static PlanetaryData UranusData;
 	const static PlanetaryData NeptuneData;
 	const static PlanetaryData PlutoData;
+	const static PlanetaryData MoonData;
 	
 	CelestialBody(Library::Game & game, const std::shared_ptr<Library::Camera>& camera, Library::PointLight& lightReference, const PlanetaryData& planetaryData);
-	~CelestialBody();
+	virtual ~CelestialBody();
 	CelestialBody(const CelestialBody& rhs) = delete;
 	CelestialBody& operator=(const CelestialBody& rhs) = delete;
 	CelestialBody(CelestialBody&& rhs) = delete;
@@ -36,8 +37,10 @@ public:
 	void Update(const Library::GameTime& gameTime) override;
 	void Draw(const Library::GameTime& gameTime) override;
 	void CreateVertexBuffer(const Library::Mesh& mesh, ID3D11Buffer** vertexBuffer) const;
+	float GetCurrentRotation() const;
+	float GetCurrentOrbit() const;
 
-private:
+protected:
 	struct VSCBufferPerFrame
 	{
 		DirectX::XMFLOAT3 LightPosition;

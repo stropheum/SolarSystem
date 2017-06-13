@@ -21,6 +21,7 @@
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="CelestialBody.cpp" />
     <ClCompile Include="Path.cpp" />
+    <ClCompile Include="Moon.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RenderingGame.h" />
@@ -28,6 +29,7 @@
     <ClInclude Include="pch.h" />
     <ClInclude Include="CelestialBody.h" />
     <ClInclude Include="Path.h" />
+    <ClInclude Include="Moon.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Content\Models\PointLightProxy.obj.bin">
@@ -43,6 +45,12 @@
       <Filter>Content\Shaders</Filter>
     </FxCompile>
     <FxCompile Include="Content\Shaders\PointLightDemoVS.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\AmbientLightingDemoPS.hlsl">
+      <Filter>Content\Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="Content\Shaders\AmbientLightingDemoVS.hlsl">
       <Filter>Content\Shaders</Filter>
     </FxCompile>
   </ItemGroup>

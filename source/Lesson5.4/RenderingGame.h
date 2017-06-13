@@ -6,6 +6,7 @@
 #include <functional>
 #include "CelestialBody.h"
 #include "Path.h"
+#include "Moon.h"
 
 namespace Library
 {
@@ -55,6 +56,7 @@ namespace Rendering
 		std::shared_ptr<CelestialBody> mUranus;
 		std::shared_ptr<CelestialBody> mNeptune;
 		std::shared_ptr<CelestialBody> mPluto;
+		std::shared_ptr<Moon> mMoon;
 
 		std::shared_ptr<Library::Path> mMercuryPath;
 		std::shared_ptr<Library::Path> mVenusPath;

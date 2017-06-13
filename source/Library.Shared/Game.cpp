@@ -22,8 +22,8 @@ namespace Library
 		assert(getWindowCallback != nullptr);
 		assert(mGetRenderTargetSize != nullptr);
 
-		CreateDeviceIndependentResources();
-		CreateDeviceResources();
+		Game::CreateDeviceIndependentResources();
+		Game::CreateDeviceResources();
 	}
 
 	ID3D11Device2* Game::Direct3DDevice() const

@@ -6,7 +6,7 @@ using namespace std;
 
 void Shutdown(const wstring& className);
 
-const SIZE RenderTargetSize = { 1600, 900 };
+const SIZE RenderTargetSize = { 1300, 975 };
 HWND mWindowHandle;
 WNDCLASSEX mWindow;
 unique_ptr<RenderingGame> mGame;
