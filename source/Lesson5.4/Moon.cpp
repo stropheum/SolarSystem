@@ -94,9 +94,9 @@ void Moon::Update(const Library::GameTime& gameTime)
 			XMMatrixScaling(moonScale, moonScale, moonScale) *
 			XMMatrixRotationY(mCurrentRotation) *
 			XMMatrixRotationRollPitchYaw(0.0f, 0.0f, mPlanetaryData.tilt) *
-			XMMatrixTranslation(CelestialBody::MoonData.distance, 0.0f, 0.0f) *
+			XMMatrixTranslation(0.0f, 0.0f, CelestialBody::MoonData.distance * CelestialBody::OrbitalScale) *
 			XMMatrixRotationY(mCurrentOrbitAroundPlanet) *
-			XMMatrixTranslation(0.0f, 0.0f, mPlanetaryData.distance) *
+			XMMatrixTranslation(0.0f, 0.0f, mPlanetaryData.distance * CelestialBody::OrbitalScale) *
 			XMMatrixRotationY(mCurrentOrbit)
 		);
 	}

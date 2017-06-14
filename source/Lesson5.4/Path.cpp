@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Path.h"
+#include "CelestialBody.h"
 
 using namespace DirectX;
 
@@ -14,14 +15,14 @@ namespace Library
 	Path::Path(Game& game, const std::shared_ptr<Camera>& camera, const float& radius)
 		: DrawableGameComponent(game, camera), mVertexShader(nullptr), mPixelShader(nullptr), mInputLayout(nullptr), mVertexBuffer(nullptr),
 		mVertexCBufferPerObject(nullptr), mVertexCBufferPerObjectData(),
-		mPosition(Vector3Helper::Zero), mSize(DefaultSize), mScale(DefaultScale), mColor(DefaultColor), mWorldMatrix(MatrixHelper::Identity), mRadius(radius)
+		mPosition(Vector3Helper::Zero), mSize(DefaultSize), mScale(DefaultScale), mColor(DefaultColor), mWorldMatrix(MatrixHelper::Identity), mRadius(radius * CelestialBody::OrbitalScale)
 	{
 	}
 
 	Path::Path(Game& game, const std::shared_ptr<Camera>& camera, const float& radius, UINT size, UINT scale, const XMFLOAT4& color)
 		: DrawableGameComponent(game, camera), mVertexShader(nullptr), mPixelShader(nullptr), mInputLayout(nullptr), mVertexBuffer(nullptr),
 		mVertexCBufferPerObject(nullptr), mVertexCBufferPerObjectData(),
-		mPosition(Vector3Helper::Zero), mSize(size), mScale(scale), mColor(color), mWorldMatrix(MatrixHelper::Identity), mRadius(radius)
+		mPosition(Vector3Helper::Zero), mSize(size), mScale(scale), mColor(color), mWorldMatrix(MatrixHelper::Identity), mRadius(radius * CelestialBody::OrbitalScale)
 	{
 	}
 
@@ -146,12 +147,8 @@ namespace Library
 		std::unique_ptr<VertexPositionColor> vertexData(new VertexPositionColor[length]);
 		VertexPositionColor* vertices = vertexData.get();
 
-//		float adjustedScale = mScale * 0.1f;
-//		float maxPosition = mSize * adjustedScale / 2;
-
 		for (unsigned int i = 0, j = 0; i < mSize; i++, j = i)
 		{
-//			float position = maxPosition - (i * adjustedScale);
 			float positionX = mRadius * cos(2 * XM_PI * i / mSize);
 			float positionY = mRadius * sin(2 * XM_PI * i / mSize);
 			vertices[i] = VertexPositionColor(XMFLOAT4(positionX, 0.0f, positionY, 1.0f), mColor);

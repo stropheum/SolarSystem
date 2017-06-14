@@ -40,6 +40,9 @@ public:
 	float GetCurrentRotation() const;
 	float GetCurrentOrbit() const;
 
+	static const float ModelRotationRate;
+	static const float OrbitalScale;
+
 protected:
 	struct VSCBufferPerFrame
 	{
@@ -99,9 +102,6 @@ protected:
 	};
 
 	void ToggleAnimation();
-
-	static const float ModelRotationRate;
-	static const float OrbitalScale;
 
 	DirectX::XMFLOAT4X4 mWorldMatrix;
 	PSCBufferPerFrame mPSCBufferPerFrameData;

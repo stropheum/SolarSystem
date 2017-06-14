@@ -151,7 +151,7 @@ namespace Rendering
 		XMMATRIX worldMatrix = XMLoadFloat4x4(&mWorldMatrix);
 		XMMATRIX wvp = worldMatrix * mCamera->ViewProjectionMatrix();
 		wvp = XMMatrixTranspose(wvp);
-		XMStoreFloat4x4(&mVSCBufferPerObjectData.WorldViewProjection, wvp * XMMatrixScaling(5.0f, 5.0f, 5.0f));
+		XMStoreFloat4x4(&mVSCBufferPerObjectData.WorldViewProjection, wvp * XMMatrixScaling(2.0f, 2.0f, 2.0f));
 		XMStoreFloat4x4(&mVSCBufferPerObjectData.World, XMMatrixTranspose(worldMatrix));
 		direct3DDeviceContext->UpdateSubresource(mVSCBufferPerObject.Get(), 0, nullptr, &mVSCBufferPerObjectData, 0, 0);
 
@@ -172,24 +172,6 @@ namespace Rendering
 		// Comment end
 
 		mProxyModel->Draw(gameTime);
-
-		// Draw help text
-//		mRenderStateHelper.SaveAll();
-//		mSpriteBatch->Begin();
-//
-//		wostringstream helpLabel;
-//		helpLabel << "Ambient Intensity (+PgUp/-PgDn): " << mPSCBufferPerFrameData.AmbientColor.x << "\n";
-//		helpLabel << L"Specular Intensity (+Insert/-Delete): " << mPSCBufferPerObjectData.SpecularColor.x << "\n";
-//		helpLabel << L"Specular Power (+O/-P): " << mPSCBufferPerObjectData.SpecularPower << "\n";
-//		helpLabel << L"Point Light Intensity (+Home/-End): " << mPSCBufferPerFrameData.LightColor.x << "\n";
-//		helpLabel << L"Point Light Radius (+V/-B): " << mVSCBufferPerFrameData.LightRadius << "\n";
-//		helpLabel << L"Move Point Light (8/2, 4/6, 3/9)" << "\n";
-//		helpLabel << L"Toggle Grid (G)" << "\n";
-//		helpLabel << L"Toggle Animation (Space)" << "\n";
-//	
-//		mSpriteFont->DrawString(mSpriteBatch.get(), helpLabel.str().c_str(), mTextPosition);
-//		mSpriteBatch->End();
-//		mRenderStateHelper.RestoreAll();
 	}
 
 	Library::PointLight& PointLightDemo::GetPointLight() 
@@ -235,27 +217,6 @@ namespace Rendering
 		mPSCBufferPerFrameData.AmbientColor.y = 1.0f;
 		mPSCBufferPerFrameData.AmbientColor.z = 1.0f;
 		mGame->Direct3DDeviceContext()->UpdateSubresource(mPSCBufferPerFrame.Get(), 0, nullptr, &mPSCBufferPerFrameData, 0, 0);
-//		static float ambientIntensity = 1.0f;// mPSCBufferPerFrameData.AmbientColor.x;
-//
-//		assert(mKeyboard != nullptr);
-//
-//		if (mKeyboard->IsKeyDown(Keys::PageUp) && ambientIntensity < 1.0f)
-//		{
-////			ambientIntensity += gameTime.ElapsedGameTimeSeconds().count();
-//			ambientIntensity = 1.0f;// min(ambientIntensity, 1.0f);
-//
-//			mPSCBufferPerFrameData.AmbientColor = XMFLOAT3(ambientIntensity, ambientIntensity, ambientIntensity);
-////			mPSCBufferPerFrameData.AmbientColor = XMFLOAT3(1.0f, 1.0f, 1.0f);
-//			mGame->Direct3DDeviceContext()->UpdateSubresource(mPSCBufferPerFrame.Get(), 0, nullptr, &mPSCBufferPerFrameData, 0, 0);
-//		}
-//		else if (mKeyboard->IsKeyDown(Keys::PageDown) && ambientIntensity > 0.0f)
-//		{
-////			ambientIntensity -= gameTime.ElapsedGameTimeSeconds().count();
-//			ambientIntensity = 1.0f;// max(ambientIntensity, 0.0f);
-//
-//			mPSCBufferPerFrameData.AmbientColor = XMFLOAT3(ambientIntensity, ambientIntensity, ambientIntensity);
-//			mGame->Direct3DDeviceContext()->UpdateSubresource(mPSCBufferPerFrame.Get(), 0, nullptr, &mPSCBufferPerFrameData, 0, 0);
-//		}
 	}
 
 	void PointLightDemo::UpdatePointLight(const GameTime& gameTime)
