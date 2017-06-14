@@ -1,0 +1,62 @@
+﻿  compilation object save succeeded; see C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\BasicPS.cso
+  compilation object save succeeded; see C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\BasicVS.cso
+  compilation object save succeeded; see C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\SkyboxPS.cso
+  compilation object save succeeded; see C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\SkyboxVS.cso
+  pch.cpp
+  UtilityWin32.cpp
+  BlendStates.cpp
+  Camera.cpp
+  ColorHelper.cpp
+  DirectionalLight.cpp
+  DrawableGameComponent.cpp
+  FirstPersonCamera.cpp
+  FpsComponent.cpp
+  Game.cpp
+  GameClock.cpp
+  GameComponent.cpp
+  GameException.cpp
+  GamePadComponent.cpp
+  GameTime.cpp
+  Grid.cpp
+  KeyboardComponent.cpp
+  Light.cpp
+  MatrixHelper.cpp
+  Mesh.cpp
+  Model.cpp
+  Compiling...
+  ModelMaterial.cpp
+  MouseComponent.cpp
+  OrthographicCamera.cpp
+  PerspectiveCamera.cpp
+  PointLight.cpp
+  ProxyModel.cpp
+  RasterizerStates.cpp
+  RenderStateHelper.cpp
+  RenderTarget.cpp
+  SamplerStates.cpp
+  ServiceContainer.cpp
+  Skybox.cpp
+  SpotLight.cpp
+  StreamHelper.cpp
+  Utility.cpp
+  VectorHelper.cpp
+  Library.Desktop.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Library.Desktop.lib
+  A subdirectory or file C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content already exists.
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\Content\Fonts\Arial_14_Regular.spritefont
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\Content\Models\Sphere.obj.bin
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\Content\Shaders\BasicPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\Content\Shaders\BasicVS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\Content\Shaders\SkyboxPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\Content\Shaders\SkyboxVS.hlsl
+  6 File(s) copied
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Fonts\Arial_14_Regular.spritefont
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Models\Sphere.obj.bin
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\BasicPS.cso
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\BasicPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\BasicVS.cso
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\BasicVS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\SkyboxPS.cso
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\SkyboxPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\SkyboxVS.cso
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Library.Desktop\bin\x64\Release\Content\Shaders\SkyboxVS.hlsl
+  10 File(s) copied

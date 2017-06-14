@@ -18,7 +18,7 @@ const CelestialBody::PlanetaryData CelestialBody::SaturnData(9.26f, -1433.0f, (1
 const CelestialBody::PlanetaryData CelestialBody::UranusData(4.01f, -2873.0f, (1.0f / 17.2f), (1.0f / 30674.6f), 1.708677f, L"Content\\Textures\\uranus.dds");
 const CelestialBody::PlanetaryData CelestialBody::NeptuneData(3.88f, -4495.0f, (1.0f / 16.11f), (1.0f / 59757.8f), 0.5166175f, L"Content\\Textures\\neptune.dds");
 const CelestialBody::PlanetaryData CelestialBody::PlutoData(0.18f, -5906.0f, (1.0f / 153.2976f), (1.0f / 90494.45f), 2.1293f, L"Content\\Textures\\pluto.dds");
-const CelestialBody::PlanetaryData CelestialBody::MoonData(0.27254f, -15.84472282f, (1.0f / 27.0f), (1.0f / 27.0f), 0.0261799f, L"Content\\Textures\\moon.dds");
+const CelestialBody::PlanetaryData CelestialBody::MoonData(0.27254f, -38.44f, (1.0f / 27.0f), (1.0f / 27.0f), 0.0261799f, L"Content\\Textures\\moon.dds");
 
 CelestialBody::CelestialBody(Library::Game& game, const std::shared_ptr<Library::Camera>& camera, 
 	Library::PointLight& lightReference, const PlanetaryData& planetaryData):

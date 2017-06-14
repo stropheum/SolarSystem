@@ -9,7 +9,7 @@ namespace Library
 {
 	RTTI_DEFINITIONS(Game)
 
-	const UINT Game::DefaultFrameRate = 60;
+	const UINT Game::DefaultFrameRate = 120;
 	const UINT Game::DefaultMultiSamplingCount = 4;
 	const UINT Game::DefaultBufferCount = 2;
 

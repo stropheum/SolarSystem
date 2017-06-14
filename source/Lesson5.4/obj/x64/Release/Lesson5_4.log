@@ -1,0 +1,39 @@
+﻿  A subdirectory or file C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\x64\Release\Content already exists.
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Fonts\Arial_14_Regular.spritefont
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Models\Sphere.obj.bin
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\BasicPS.cso
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\BasicPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\BasicVS.cso
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\BasicVS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\SkyboxPS.cso
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\SkyboxPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\SkyboxVS.cso
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\build\..\content\Shaders\SkyboxVS.hlsl
+  10 File(s) copied
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Models\PointLightProxy.obj.bin
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Models\Sphere.obj.bin
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\AmbientLightingDemoPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\AmbientLightingDemoVS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\PointLightDemoPS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Shaders\PointLightDemoVS.hlsl
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\EarthComposite.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\EarthSpecularMap.png
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\jupiter.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\mars.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\mercury.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\moon.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\neptune.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\pluto.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\saturn.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\sun.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\uranus.dds
+  C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\Content\Textures\venus.dds
+  18 File(s) copied
+  CelestialBody.cpp
+  Generating code
+  101 of 2811 functions ( 3.6%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    9 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\x64\Release\SolarSystem.exe
+  Lesson5_4.vcxproj -> C:\Users\strop\OneDrive\Documents\GitHub\SolarSystem\source\Lesson5.4\bin\x64\Release\SolarSystem.pdb (Full PDB)
